@@ -1,7 +1,10 @@
 package entity;
 
+import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
+import com.googlecode.objectify.annotation.Load;
 
 import java.util.Calendar;
 
@@ -19,8 +22,19 @@ public class Article {
     private long updatedAtMLS;
     private long deletedAtMLS;
     private int status;
+    @Index
+    @Load
+    private Ref<Category> category;
 
     public Article() {
+    }
+
+    public Ref<Category> getCategory() {
+        return category;
+    }
+
+    public void setCategory(Ref<Category> category) {
+        this.category = category;
     }
 
     public String getUrl() {
@@ -104,6 +118,7 @@ public class Article {
     }
 
     public static final class Builder {
+        Ref<Category> category;
         private String url;
         private String title;
         private String description;
@@ -116,10 +131,6 @@ public class Article {
         private int status;
 
         private Builder() {
-            this.createdAtMLS = Calendar.getInstance().getTimeInMillis();
-            this.updatedAtMLS = Calendar.getInstance().getTimeInMillis();
-            this.sourceId = 0;
-            this.status = 1;
         }
 
         public static Builder anArticle() {
@@ -176,6 +187,11 @@ public class Article {
             return this;
         }
 
+        public Builder withCategory(Ref<Category> category) {
+            this.category = category;
+            return this;
+        }
+
         public Article build() {
             Article article = new Article();
             article.setUrl(url);
@@ -188,6 +204,7 @@ public class Article {
             article.setUpdatedAtMLS(updatedAtMLS);
             article.setDeletedAtMLS(deletedAtMLS);
             article.setStatus(status);
+            article.setCategory(category);
             return article;
         }
     }

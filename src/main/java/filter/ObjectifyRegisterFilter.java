@@ -2,6 +2,7 @@ package filter;
 
 import com.googlecode.objectify.ObjectifyService;
 import entity.Article;
+import entity.Category;
 import entity.CrawlerSource;
 
 import javax.servlet.*;
@@ -16,6 +17,7 @@ public class ObjectifyRegisterFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         ObjectifyService.register(Article.class);
+        ObjectifyService.register(Category.class);
         ObjectifyService.register(CrawlerSource.class);
         filterChain.doFilter(servletRequest, servletResponse);
     }
