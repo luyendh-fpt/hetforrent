@@ -6,6 +6,7 @@ import com.googlecode.objectify.Ref;
 import dto.ArticleDto;
 import entity.Article;
 import entity.Category;
+import util.StringUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.logging.Logger;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
@@ -24,8 +27,12 @@ public class ArticleController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("categories", ofy().load().type(Category.class).list());
-        req.getRequestDispatcher("/admin/article/form.jsp").forward(req, resp);
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+        System.out.println(StringUtil.getBundle("hello"));
+        resp.getWriter().println(StringUtil.getBundle("hello"));
+//        req.setAttribute("categories", ofy().load().type(Category.class).list());
+//        req.getRequestDispatcher("/admin/article/form.jsp").forward(req, resp);
     }
 
     @Override

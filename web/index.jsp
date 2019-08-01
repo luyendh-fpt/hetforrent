@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  $END$
+  <a href="/change-language?lang=vi">Vi</a>&nbsp;
+  <a href="/change-language?lang=en">En</a>
+  ${bundle.bye}
   </body>
 </html>

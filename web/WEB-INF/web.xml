@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
     <servlet>
+        <servlet-name>LanguageController</servlet-name>
+        <servlet-class>admin.LanguageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LanguageController</servlet-name>
+        <url-pattern>/change-language</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>ListArticleController</servlet-name>
         <servlet-class>admin.ListArticleController</servlet-class>
     </servlet>
@@ -106,6 +114,15 @@
     </servlet-mapping>
 
     <filter>
+        <filter-name>LanguageFilter</filter-name>
+        <filter-class>filter.LanguageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LanguageFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <filter-name>ObjectifyRegisterFilter</filter-name>
         <filter-class>filter.ObjectifyRegisterFilter</filter-class>
     </filter>
@@ -130,14 +147,14 @@
         <url-pattern>*</url-pattern>
     </filter-mapping>
 
-<!--    <security-constraint>-->
-<!--        <web-resource-collection>-->
-<!--            <web-resource-name>admin</web-resource-name>-->
-<!--            <url-pattern>/admin/*</url-pattern>-->
-<!--        </web-resource-collection>-->
-<!--        <auth-constraint>-->
-<!--            <role-name>*</role-name>-->
-<!--        </auth-constraint>-->
-<!--    </security-constraint>-->
+    <!--    <security-constraint>-->
+    <!--        <web-resource-collection>-->
+    <!--            <web-resource-name>admin</web-resource-name>-->
+    <!--            <url-pattern>/admin/*</url-pattern>-->
+    <!--        </web-resource-collection>-->
+    <!--        <auth-constraint>-->
+    <!--            <role-name>*</role-name>-->
+    <!--        </auth-constraint>-->
+    <!--    </security-constraint>-->
 
 </web-app>

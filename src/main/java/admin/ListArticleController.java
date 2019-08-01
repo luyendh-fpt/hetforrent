@@ -23,6 +23,9 @@ public class ListArticleController extends HttpServlet {
         req.setAttribute("articles", ofy().load().type(Article.class)
                 .filter("category", Ref.create(Key.create(Category.class, 1564492405495L)))
                 .list());
-        req.getRequestDispatcher("/admin/article/list.jsp").forward(req, resp);
+        req.setAttribute("title", "List article - Hetforrent Admin");
+        req.setAttribute("description", "Newest article - Hetforrent Admin");
+        req.setAttribute("keyword", "hatforrent, auto bot");
+        req.getRequestDispatcher("/admin/article/list-v2.jsp").forward(req, resp);
     }
 }
