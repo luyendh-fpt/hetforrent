@@ -8,7 +8,7 @@ import java.util.Calendar;
 @Entity
 public class Category {
     @Id
-    private long id;
+    private String id;
     private String name;
     private String description;
     private long createdAtMLS;
@@ -19,11 +19,11 @@ public class Category {
     public Category() {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -76,7 +76,7 @@ public class Category {
     }
 
     public static final class Builder {
-        private long id;
+        private String id;
         private String name;
         private String description;
         private long createdAtMLS;
@@ -85,7 +85,6 @@ public class Category {
         private int status;
 
         private Builder() {
-            this.id = Calendar.getInstance().getTimeInMillis();
             this.createdAtMLS = Calendar.getInstance().getTimeInMillis();
             this.updatedAtMLS = Calendar.getInstance().getTimeInMillis();
             this.status = 1;
@@ -95,7 +94,7 @@ public class Category {
             return new Builder();
         }
 
-        public Builder withId(long id) {
+        public Builder withId(String id) {
             this.id = id;
             return this;
         }

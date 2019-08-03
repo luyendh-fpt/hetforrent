@@ -15,7 +15,7 @@ public class ArticleDto {
     private long updatedAtMLS;
     private long deletedAtMLS;
     private int status;
-    private long categoryId;
+    private String categoryId;
     private String categoryName;
     private String categoryDescription;
 
@@ -111,11 +111,11 @@ public class ArticleDto {
         this.status = status;
     }
 
-    public long getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(long categoryId) {
+    public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
     }
 
